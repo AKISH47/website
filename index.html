@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underhour Cleaning - Elite Car Care | Fremont, CA</title>
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
        
@@ -1468,6 +1472,18 @@
     </footer>
 
     <script>
+        // EmailJS Configuration
+        // Replace these with your actual EmailJS credentials
+        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
+        const EMAILJS_TEMPLATE_ID_BOOKING = 'YOUR_BOOKING_TEMPLATE_ID'; // Replace with your booking template ID
+        const EMAILJS_TEMPLATE_ID_CONTACT = 'YOUR_CONTACT_TEMPLATE_ID'; // Replace with your contact template ID
+        const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+
+        // Initialize EmailJS
+        (function(){
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        })();
+
         // Loading screen
         window.addEventListener('load', () => {
             const loading = document.getElementById('loading');
@@ -1528,21 +1544,20 @@
         }
 
         // Email sending function using EmailJS
-        function sendEmail(templateParams, formType) {
-            // This is a placeholder for EmailJS integration
-            // You'll need to replace with actual EmailJS configuration
-           
-            // Simulate sending email
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // Simulate success/failure
-                    if (Math.random() > 0.1) { // 90% success rate
-                        resolve('Email sent successfully');
-                    } else {
-                        reject('Failed to send email');
-                    }
-                }, 2000);
-            });
+        async function sendEmailJS(templateParams, templateId) {
+            try {
+                const response = await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    templateId,
+                    templateParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+                console.log('Email sent successfully:', response);
+                return response;
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                throw error;
+            }
         }
 
         // Booking form submission
@@ -1560,45 +1575,39 @@
             const formData = new FormData(this);
             const bookingData = Object.fromEntries(formData.entries());
            
-            // Validate Fremont area (basic validation)
-            if (!bookingData.email.includes('@')) {
+            // Validate required fields
+            if (!bookingData.firstName || !bookingData.lastName || !bookingData.email || !bookingData.phone || !bookingData.service || !bookingData.date || !bookingData.time) {
+                showAlert('Please fill in all required fields', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(bookingData.email)) {
                 showAlert('Please enter a valid email address', 'error');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 return;
             }
            
-            // Prepare email template
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com', // Your business email
+            // Prepare email template parameters
+            const templateParams = {
+                to_name: 'Underhour Cleaning Team', // This will be sent to your business
                 from_name: `${bookingData.firstName} ${bookingData.lastName}`,
                 from_email: bookingData.email,
-                subject: `New Booking Request - ${bookingData.service}`,
-                message: `
-                    NEW BOOKING REQUEST
-                   
-                    Customer Information:
-                    Name: ${bookingData.firstName} ${bookingData.lastName}
-                    Email: ${bookingData.email}
-                    Phone: ${bookingData.phone}
-                   
-                    Service Details:
-                    Service: ${bookingData.service}
-                    Date: ${bookingData.date}
-                    Time: ${bookingData.time}
-                    Vehicle: ${bookingData.vehicle || 'Not specified'}
-                   
-                    Special Requests:
-                    ${bookingData.message || 'None'}
-                   
-                    Location: Fremont, CA (Service area confirmed)
-                   
-                    Please respond to this booking request promptly.
-                `
+                phone: bookingData.phone,
+                service: bookingData.service,
+                date: bookingData.date,
+                time: bookingData.time,
+                vehicle: bookingData.vehicle || 'Not specified',
+                message: bookingData.message || 'No special requests',
+                reply_to: bookingData.email
             };
            
             try {
-                await sendEmail(emailTemplate, 'booking');
+                await sendEmailJS(templateParams, EMAILJS_TEMPLATE_ID_BOOKING);
                 showAlert('Booking request sent successfully! We\'ll contact you within 24 hours to confirm your appointment.', 'success');
                 this.reset(); // Reset form
             } catch (error) {
@@ -1626,29 +1635,35 @@
             const formData = new FormData(this);
             const contactData = Object.fromEntries(formData.entries());
            
-            // Prepare email template
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com', // Your business email
+            // Validate required fields
+            if (!contactData.contactName || !contactData.contactEmail || !contactData.contactSubject || !contactData.contactMessage) {
+                showAlert('Please fill in all required fields', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(contactData.contactEmail)) {
+                showAlert('Please enter a valid email address', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                return;
+            }
+           
+            // Prepare email template parameters
+            const templateParams = {
+                to_name: 'Underhour Cleaning Team',
                 from_name: contactData.contactName,
                 from_email: contactData.contactEmail,
-                subject: `Contact Form: ${contactData.contactSubject}`,
-                message: `
-                    NEW CONTACT MESSAGE
-                   
-                    From: ${contactData.contactName}
-                    Email: ${contactData.contactEmail}
-                    Subject: ${contactData.contactSubject}
-                   
-                    Message:
-                    ${contactData.contactMessage}
-                   
-                    Sent from: Underhour Cleaning Website
-                    Location: Fremont, CA
-                `
+                subject: contactData.contactSubject,
+                message: contactData.contactMessage,
+                reply_to: contactData.contactEmail
             };
            
             try {
-                await sendEmail(emailTemplate, 'contact');
+                await sendEmailJS(templateParams, EMAILJS_TEMPLATE_ID_CONTACT);
                 showAlert('Message sent successfully! We\'ll get back to you soon.', 'success');
                 this.reset(); // Reset form
             } catch (error) {
@@ -1705,175 +1720,3 @@
 
         // Add sparkle effect on service card hover
         document.querySelectorAll('.service-card, .team-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                createSparkles(this);
-            });
-        });
-
-        function createSparkles(element) {
-            for (let i = 0; i < 3; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.style.position = 'absolute';
-                sparkle.style.width = '4px';
-                sparkle.style.height = '4px';
-                sparkle.style.background = '#06b6d4';
-                sparkle.style.borderRadius = '50%';
-                sparkle.style.pointerEvents = 'none';
-                sparkle.style.animation = 'sparkleFloat 1.5s ease-out forwards';
-                sparkle.style.zIndex = '10';
-               
-                const rect = element.getBoundingClientRect();
-                sparkle.style.left = (Math.random() * rect.width) + 'px';
-                sparkle.style.top = (Math.random() * rect.height) + 'px';
-               
-                element.style.position = 'relative';
-                element.appendChild(sparkle);
-               
-                setTimeout(() => {
-                    if (sparkle.parentNode) {
-                        sparkle.remove();
-                    }
-                }, 1500);
-            }
-        }
-
-        // Add sparkle animation keyframes
-        const sparkleStyle = document.createElement('style');
-        sparkleStyle.textContent = `
-            @keyframes sparkleFloat {
-                0% {
-                    opacity: 1;
-                    transform: scale(0) translateY(0);
-                }
-                50% {
-                    opacity: 1;
-                    transform: scale(1) translateY(-30px);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) translateY(-60px);
-                }
-            }
-        `;
-        document.head.appendChild(sparkleStyle);
-
-        // Form validation
-        function validateFremontService(email, phone) {
-            // Basic validation for Fremont area
-            // You can enhance this with actual ZIP code validation
-            return true; // For demo purposes, always return true
-        }
-
-        // Add click effect to buttons
-        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-service, .submit-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-               
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-               
-                this.appendChild(ripple);
-               
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add ripple effect styles
-        const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-           
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rippleStyle);
-
-        // Enhanced form validation
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        function validatePhone(phone) {
-            const re = /^[\+]?[1-9][\d]{0,15}$/;
-            return re.test(phone.replace(/\D/g, ''));
-        }
-
-        // Real-time form validation
-        document.getElementById('email').addEventListener('input', function() {
-            if (this.value && !validateEmail(this.value)) {
-                this.style.borderColor = 'var(--error)';
-            } else {
-                this.style.borderColor = 'var(--glass-border)';
-            }
-        });
-
-        document.getElementById('phone').addEventListener('input', function() {
-            if (this.value && !validatePhone(this.value)) {
-                this.style.borderColor = 'var(--error)';
-            } else {
-                this.style.borderColor = 'var(--glass-border)';
-            }
-        });
-
-        // Auto-format phone number
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 6) {
-                value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
-            } else if (value.length >= 3) {
-                value = `(${value.slice(0,3)}) ${value.slice(3)}`;
-            }
-            e.target.value = value;
-        });
-
-        // Dynamic pricing display
-        document.getElementById('service').addEventListener('change', function() {
-            const selectedService = this.value;
-            if (selectedService) {
-                // You can add dynamic pricing logic here
-                console.log('Selected service:', selectedService);
-            }
-        });
-
-        // Performance optimization
-        let ticking = false;
-        function updateOnScroll() {
-            // Scroll-based animations here
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateOnScroll);
-                ticking = true;
-            }
-        });
-
-        // Initialize tooltips or additional features
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add any initialization code here
-            console.log('Underhour Cleaning website loaded successfully!');
-        });
-    </script>
-</body>
-</html>
