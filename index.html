@@ -1504,7 +1504,7 @@
     
     <script>
         // Initialize EMAILJS - REPLACE WITH YOUR ACTUAL PUBLIC KEY
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+        emailjs.init("90ekQp7Nrea-gfct_"); // Replace with your actual public key
         
         // Loading screen
         window.addEventListener('load', () => {
@@ -1569,14 +1569,14 @@
         async function sendEmail(templateParams, formType) {
             try {
                 // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
-                const serviceID = 'YOUR_SERVICE_ID'; // e.g., 'service_abc123'
+                const serviceID = 'service_m8k8b7r'; // e.g., 'service_abc123'
                 let templateID;
                 
                 // Use different templates for booking vs contact forms
-                if (formType === 'booking') {
-                    templateID = 'YOUR_BOOKING_TEMPLATE_ID'; // e.g., 'template_booking123'
+                if (formType === 'Booking') {
+                    templateID = 'template_3nyxspv'; // e.g., 'template_booking123'
                 } else {
-                    templateID = 'YOUR_CONTACT_TEMPLATE_ID'; // e.g., 'template_contact123'
+                    templateID = 'template_8q20z7w'; // e.g., 'template_contact123'
                 }
                 
                 const response = await emailjs.send(serviceID, templateID, templateParams);
