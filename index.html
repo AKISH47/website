@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underhour Cleaning - Elite Car Care | Fremont, CA</title>
+    <title>Elite Glo - Premium Car Washing & Detailing | Fremont, CA</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
        
@@ -64,8 +64,8 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -124,7 +124,7 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
 
-        /* Mobile menu button */
+        /* Mobile menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -281,7 +281,7 @@
             transform: translateY(-2px);
         }
 
-        /* Car Animation */
+        /* Floating Car Animation */
         .hero-visual {
             position: relative;
             display: flex;
@@ -301,12 +301,12 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: carRotate 20s linear infinite;
+            animation: carFloat 6s ease-in-out infinite;
         }
 
-        @keyframes carRotate {
-            0% { transform: rotateY(0deg) rotateX(5deg); }
-            100% { transform: rotateY(360deg) rotateX(5deg); }
+        @keyframes carFloat {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(10deg); }
         }
 
         .car {
@@ -404,7 +404,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Floating Elements */
+        /* Floating Bubbles */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -472,28 +472,19 @@
             }
         }
 
-        /* Services Section */
-        .services {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.05), transparent 70%);
-        }
-
+        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 2;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
         }
 
         .section-header {
@@ -529,6 +520,11 @@
             line-height: 1.6;
         }
 
+        /* Services Section */
+        .services {
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.05), transparent 70%);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -545,6 +541,18 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+
+        .service-card:nth-child(2) { animation-delay: -1s; }
+        .service-card:nth-child(3) { animation-delay: -2s; }
+        .service-card:nth-child(4) { animation-delay: -3s; }
+        .service-card:nth-child(5) { animation-delay: -4s; }
+        .service-card:nth-child(6) { animation-delay: -5s; }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .service-card::before {
@@ -637,7 +645,6 @@
 
         /* Team Section */
         .team {
-            padding: 8rem 0;
             background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.5));
         }
 
@@ -658,6 +665,16 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            animation: teamFloat 8s ease-in-out infinite;
+        }
+
+        .team-card:nth-child(2) { animation-delay: -2s; }
+        .team-card:nth-child(3) { animation-delay: -4s; }
+        .team-card:nth-child(4) { animation-delay: -6s; }
+
+        @keyframes teamFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
         }
 
         .team-card::before {
@@ -730,7 +747,6 @@
 
         /* Booking Section */
         .booking {
-            padding: 8rem 0;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
         }
 
@@ -856,7 +872,6 @@
 
         /* Contact Section */
         .contact {
-            padding: 8rem 0;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.5), transparent);
         }
 
@@ -912,7 +927,7 @@
             color: rgba(248, 250, 252, 0.7);
         }
 
-        /* Message/Alert System */
+        /* Alert System */
         .alert {
             position: fixed;
             top: 100px;
@@ -1063,6 +1078,19 @@
         @media (max-width: 968px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid var(--glass-border);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .mobile-menu-btn {
@@ -1140,7 +1168,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Accessibility improvements */
+        /* Accessibility */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -1153,7 +1181,6 @@
             border: 0;
         }
 
-        /* Focus styles for better accessibility */
         button:focus,
         input:focus,
         select:focus,
@@ -1176,8 +1203,8 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">Underhour Cleaning</div>
-            <ul class="nav-links">
+            <div class="logo">Elite Glo</div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#team">Team</a></li>
@@ -1203,8 +1230,8 @@
        
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Elite Glo<br>Car Care</h1>
-                <p class="subtitle">Premium car washing and detailing services in under an hour.</p>
+                <h1>Elite Glo<br>Car Washing</h1>
+                <p class="subtitle">Premium car washing and detailing services completed in under one hour by our dedicated young team.</p>
                 <div class="location-badge">
                     <span>📍</span>
                     <span>Serving Fremont, CA</span>
@@ -1212,11 +1239,11 @@
                
                 <div class="hero-stats">
                     <div class="stat">
-                        <div class="stat-number">1000+</div>
-                        <div class="stat-label">Cars Cleaned</div>
+                        <div class="stat-number">1500+</div>
+                        <div class="stat-label">Cars Washed</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">45min</div>
+                        <div class="stat-number">55min</div>
                         <div class="stat-label">Average Time</div>
                     </div>
                     <div class="stat">
@@ -1249,12 +1276,12 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="section services">
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">Our Services</div>
-                <h2 class="section-title">Premium Car Care Solutions</h2>
-                <p class="section-description">Choose from our range of professional car care services, each designed to deliver exceptional results in record time.</p>
+                <h2 class="section-title">Premium Car Washing Solutions</h2>
+                <p class="section-description">Choose from our range of professional car washing services, each designed to deliver exceptional results in under one hour.</p>
             </div>
            
             <div class="services-grid">
@@ -1322,12 +1349,12 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="team">
+    <section id="team" class="section team">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle">Our Elite Team</div>
-                <h2 class="section-title">Meet the Professionals</h2>
-                <p class="section-description">Our skilled team of car care specialists brings years of experience and passion for automotive excellence to every service.</p>
+                <div class="section-subtitle">Professional Team</div>
+                <h2 class="section-title">Meet Our Young Entrepreneurs</h2>
+                <p class="section-description">Our dedicated team of young professionals brings energy, passion, and attention to detail to every car wash. Led by teenage entrepreneurs who are committed to excellence in automotive care.</p>
             </div>
            
             <div class="team-grid">
@@ -1335,48 +1362,48 @@
                     <div class="team-avatar">A</div>
                     <h3>Akash</h3>
                     <div class="team-role">CEO & Founder</div>
-                    <p>Visionary leader with 8+ years in automotive care. Akash founded Underhour Cleaning with a mission to revolutionize the car wash industry through premium services and exceptional customer experience.</p>
+                    <p>Young visionary leader and entrepreneur who founded Elite Glo with a mission to deliver premium car washing services. Akash leads our team with passion for excellence and customer satisfaction.</p>
                 </div>
                
                 <div class="team-card">
                     <div class="team-avatar">S</div>
                     <h3>Saarthak</h3>
-                    <div class="team-role">Lead Detailing Specialist</div>
-                    <p>Master craftsman specializing in paint correction and ceramic coatings. With 6+ years of experience, Saarthak ensures every vehicle receives meticulous attention to detail and perfect results.</p>
-                </div>
-               
-                <div class="team-card">
-                    <div class="team-avatar">P</div>
-                    <h3>Prahlad</h3>
-                    <div class="team-role">Interior Care Expert</div>
-                    <p>Expert in interior detailing and upholstery restoration. Prahlad's expertise in leather treatment and fabric care transforms vehicle interiors to showroom condition.</p>
+                    <div class="team-role">Lead Washing Specialist</div>
+                    <p>Dedicated team member specializing in exterior washing and paint care. Saarthak ensures every vehicle receives meticulous attention and leaves with a perfect shine.</p>
                 </div>
                
                 <div class="team-card">
                     <div class="team-avatar">J</div>
                     <h3>Justin</h3>
-                    <div class="team-role">Senior Wash Technician</div>
-                    <p>Skilled technician specializing in exterior cleaning and paint protection. Justin's precision and efficiency ensure consistent, high-quality results for every customer.</p>
+                    <div class="team-role">Interior Care Expert</div>
+                    <p>Expert in interior detailing and customer service. Justin's attention to detail transforms vehicle interiors while providing exceptional customer experience.</p>
+                </div>
+               
+                <div class="team-card">
+                    <div class="team-avatar">P</div>
+                    <h3>Prahlad</h3>
+                    <div class="team-role">Quality Control Specialist</div>
+                    <p>Ensures every car meets our high standards before completion. Prahlad's commitment to quality guarantees customer satisfaction with every service.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Booking Section -->
-    <section id="booking" class="booking">
+    <section id="booking" class="section booking">
         <div class="container">
             <div class="booking-container">
                 <div class="booking-info">
                     <h3>Book Your Elite Service</h3>
-                    <p>Experience premium car care that transforms your vehicle in under an hour. Our expert team in Fremont, CA is ready to deliver exceptional results.</p>
+                    <p>Experience premium car washing that transforms your vehicle in under one hour. Our young, energetic team in Fremont, CA is ready to deliver exceptional results with professional care.</p>
                    
                     <ul class="booking-features">
-                        <li>Professional service in under 60 minutes</li>
-                        <li>Premium eco-friendly products</li>
-                        <li>Experienced and certified technicians</li>
+                        <li>Professional service completed within 60 minutes</li>
+                        <li>Premium eco-friendly washing products</li>
+                        <li>Dedicated young professional team</li>
                         <li>100% satisfaction guarantee</li>
                         <li>Convenient location in Fremont, CA</li>
-                        <li>Flexible scheduling options</li>
+                        <li>Flexible scheduling to fit your day</li>
                     </ul>
                 </div>
                
@@ -1462,12 +1489,12 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="section contact">
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">Get In Touch</div>
                 <h2 class="section-title">Contact Us</h2>
-                <p class="section-description">Have questions or need assistance? We're here to help with all your car care needs.</p>
+                <p class="section-description">Have questions or need assistance? We're here to help with all your car washing needs.</p>
             </div>
            
             <div class="contact-grid">
@@ -1478,7 +1505,7 @@
                         <div class="contact-icon">📞</div>
                         <div class="contact-details">
                             <h4>Phone</h4>
-                            <p>(510) 555-WASH</p>
+                            <p>(510) 555-GLOW</p>
                         </div>
                     </div>
                    
@@ -1486,7 +1513,7 @@
                         <div class="contact-icon">📧</div>
                         <div class="contact-details">
                             <h4>Email</h4>
-                            <p>info@underhourcleaning.com</p>
+                            <p>info@eliteglo.com</p>
                         </div>
                     </div>
                    
@@ -1494,7 +1521,7 @@
                         <div class="contact-icon">📍</div>
                         <div class="contact-details">
                             <h4>Location</h4>
-                            <p>123 Elite Drive<br>Fremont, CA 94536</p>
+                            <p>456 Glo Street<br>Fremont, CA 94536</p>
                         </div>
                     </div>
                    
@@ -1544,8 +1571,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Underhour Cleaning</h4>
-                    <p>Premium car care services delivered in under an hour. Experience elite automotive care in Fremont, CA with our professional team.</p>
+                    <h4>Elite Glo</h4>
+                    <p>Premium car washing services delivered in under one hour by our dedicated young team. Experience professional automotive care in Fremont, CA.</p>
                 </div>
                
                 <div class="footer-section">
@@ -1559,9 +1586,9 @@
                
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>📞 (510) 555-WASH</p>
-                    <p>📧 info@underhourcleaning.com</p>
-                    <p>📍 123 Elite Drive, Fremont, CA</p>
+                    <p>📞 (510) 555-GLOW</p>
+                    <p>📧 info@eliteglo.com</p>
+                    <p>📍 456 Glo Street, Fremont, CA</p>
                     <p>⏰ Mon-Sun: 8AM - 8PM</p>
                 </div>
                
@@ -1575,7 +1602,7 @@
             </div>
            
             <div class="footer-bottom">
-                <p>&copy; 2025 Underhour Cleaning. All rights reserved. Elite car care services in Fremont, CA.</p>
+                <p>&copy; 2025 Elite Glo. All rights reserved. Premium car washing services in Fremont, CA.</p>
             </div>
         </div>
     </footer>
@@ -1584,8 +1611,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <script>
-        // Initialize EMAILJS - REPLACE WITH YOUR ACTUAL PUBLIC KEY
-        emailjs.init("90ekQp7Nrea-gfct_"); // Replace with your actual public key
+        // Initialize EmailJS - REPLACE WITH YOUR ACTUAL PUBLIC KEY
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
         
         // Loading screen
         window.addEventListener('load', () => {
@@ -1608,20 +1635,37 @@
             }
         });
 
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling function
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const navbarHeight = navbar.offsetHeight;
+                const targetPosition = element.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         }
 
         // Book service function
         function bookService(serviceName) {
-            // Set the service in the booking form
             const serviceSelect = document.getElementById('service');
             const options = serviceSelect.options;
             for (let i = 0; i < options.length; i++) {
@@ -1630,7 +1674,6 @@
                     break;
                 }
             }
-            // Scroll to booking section
             scrollToSection('booking');
         }
 
@@ -1646,24 +1689,30 @@
             }, 5000);
         }
 
-        // Email validation function
+        // Email validation
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
+        }
+
+        // Phone validation
+        function validatePhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+            return phoneRegex.test(cleanPhone) && cleanPhone.length >= 10;
         }
 
         // Email sending function using EmailJS
         async function sendEmail(templateParams, formType) {
             try {
                 // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
-                const serviceID = 'service_m8k8b7r'; // e.g., 'service_abc123'
+                const serviceID = 'YOUR_SERVICE_ID'; // e.g., 'service_abc123'
                 let templateID;
                 
-                // Use different templates for booking vs contact forms
                 if (formType === 'booking') {
-                    templateID = 'template_3nyxspv'; // e.g., 'template_booking123'
+                    templateID = 'YOUR_BOOKING_TEMPLATE_ID'; // e.g., 'template_booking123'
                 } else {
-                    templateID = 'template_8q20z7w'; // e.g., 'template_contact123'
+                    templateID = 'YOUR_CONTACT_TEMPLATE_ID'; // e.g., 'template_contact123'
                 }
                 
                 const response = await emailjs.send(serviceID, templateID, templateParams);
@@ -1675,479 +1724,12 @@
             }
         }
 
-        // Booking form submission
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-           
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-           
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Booking...';
-           
-            // Get form data
-            const formData = new FormData(this);
-            const bookingData = Object.fromEntries(formData.entries());
-           
-            // Validate email
-            if (!validateEmail(bookingData.email)) {
-                showAlert('Please enter a valid email address', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                return;
-            }
-           
-            // Prepare email template parameters for EmailJS
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com', // Your business email
-                from_name: `${bookingData.firstName} ${bookingData.lastName}`,
-                from_email: bookingData.email,
-                customer_phone: bookingData.phone,
-                service_type: bookingData.service,
-                preferred_date: bookingData.date,
-                preferred_time: bookingData.time,
-                vehicle_info: bookingData.vehicle || 'Not specified',
-                special_requests: bookingData.message || 'None',
-                subject: `New Booking Request - ${bookingData.service}`,
-                // Additional fields for template
-                customer_first_name: bookingData.firstName,
-                customer_last_name: bookingData.lastName,
-                booking_location: 'Fremont, CA'
-            };
-           
-            try {
-                await sendEmail(emailTemplate, 'booking');
-                showAlert('Booking request sent successfully! We\'ll contact you within 24 hours to confirm your appointment.', 'success');
-                this.reset(); // Reset form
-            } catch (error) {
-                showAlert('Failed to send booking request. Please try again or call us directly at (510) 555-WASH.', 'error');
-                console.error('Booking error:', error);
-            }
-           
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        });
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-           
-            const submitBtn = document.getElementById('contactSubmitBtn');
-            const originalText = submitBtn.textContent;
-           
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-           
-            // Get form data
-            const formData = new FormData(this);
-            const contactData = Object.fromEntries(formData.entries());
-           
-            // Validate email
-            if (!validateEmail(contactData.contactEmail)) {
-                showAlert('Please enter a valid email address', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                return;
-            }
-           
-            // Prepare email template parameters for EmailJS
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com', // Your business email
-                from_name: contactData.contactName,
-                from_email: contactData.contactEmail,
-                contact_subject: contactData.contactSubject,
-                contact_message: contactData.contactMessage,
-                subject: `Contact Form: ${contactData.contactSubject}`,
-                // Additional fields for template
-                sender_location: 'Fremont, CA'
-            };
-           
-            try {
-                await sendEmail(emailTemplate, 'contact');
-                showAlert('Message sent successfully! We\'ll get back to you soon.', 'success');
-                this.reset(); // Reset form
-            } catch (error) {
-                showAlert('Failed to send message. Please try again or call us directly at (510) 555-WASH.', 'error');
-                console.error('Contact error:', error);
-            }
-           
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Set minimum date to today
-        const dateInput = document.getElementById('date');
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.service-card, .team-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Add sparkle effect on service card hover
-        document.querySelectorAll('.service-card, .team-card').forEach(card => {
-            card.addEventListener('mouseenter', function(e) {
-                createSparkles(e.currentTarget);
-            });
-        });
-
-        // Create sparkle effect
-        function createSparkles(element) {
-            const rect = element.getBoundingClientRect();
-            const sparkleCount = 6;
-            
-            for (let i = 0; i < sparkleCount; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.style.left = Math.random() * rect.width + 'px';
-                    sparkle.style.top = Math.random() * rect.height + 'px';
-                    
-                    element.style.position = 'relative';
-                    element.appendChild(sparkle);
-                    
-                    // Remove sparkle after animation
-                    setTimeout(() => {
-                        if (sparkle.parentNode) {
-                            sparkle.parentNode.removeChild(sparkle);
-                        }
-                    }, 1500);
-                }, i * 100);
-            }
-        }
-
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-service, .submit-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const ripple = document.createElement('span');
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                // Remove ripple after animation
-                setTimeout(() => {
-                    if (ripple.parentNode) {
-                        ripple.parentNode.removeChild(ripple);
-                    }
-                }, 600);
-            });
-        });
-
-        // Mobile menu functionality (basic implementation)
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'var(--darker)';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '2rem';
-                navLinks.style.borderTop = '1px solid var(--glass-border)';
-                navLinks.style.zIndex = '999';
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 968) {
-                    navLinks.style.display = 'none';
-                }
-            });
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 968) {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'static';
-                navLinks.style.flexDirection = 'row';
-                navLinks.style.padding = '0';
-                navLinks.style.background = 'transparent';
-                navLinks.style.borderTop = 'none';
-            } else {
-                navLinks.style.display = 'none';
-            }
-        });
-
-        // Form validation improvements
+        // Form validation
         function validateForm(formData, isBooking = false) {
             const errors = [];
             
-            // Check required fields
             if (isBooking) {
                 if (!formData.firstName.trim()) errors.push('First name is required');
                 if (!formData.lastName.trim()) errors.push('Last name is required');
                 if (!formData.service) errors.push('Please select a service');
-                if (!formData.date) errors.push('Please select a date');
-                if (!formData.time) errors.push('Please select a time');
-            } else {
-                if (!formData.contactName.trim()) errors.push('Name is required');
-                if (!formData.contactSubject.trim()) errors.push('Subject is required');
-                if (!formData.contactMessage.trim()) errors.push('Message is required');
-            }
-            
-            const email = isBooking ? formData.email : formData.contactEmail;
-            if (!email.trim()) {
-                errors.push('Email is required');
-            } else if (!validateEmail(email)) {
-                errors.push('Please enter a valid email address');
-            }
-            
-            const phone = formData.phone;
-            if (isBooking && phone && !validatePhone(phone)) {
-                errors.push('Please enter a valid phone number');
-            }
-            
-            return errors;
-        }
-
-        // Phone validation function
-        function validatePhone(phone) {
-            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-            const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
-            return phoneRegex.test(cleanPhone) && cleanPhone.length >= 10;
-        }
-
-        // Enhanced form submission with better validation
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-           
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-           
-            // Get form data
-            const formData = new FormData(this);
-            const bookingData = Object.fromEntries(formData.entries());
-           
-            // Validate form
-            const errors = validateForm(bookingData, true);
-            if (errors.length > 0) {
-                showAlert(errors[0], 'error');
-                return;
-            }
-           
-            // Validate date is not in the past
-            const selectedDate = new Date(bookingData.date);
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            
-            if (selectedDate < today) {
-                showAlert('Please select a future date', 'error');
-                return;
-            }
-           
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Booking...';
-           
-            // Prepare email template parameters
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com',
-                from_name: `${bookingData.firstName} ${bookingData.lastName}`,
-                from_email: bookingData.email,
-                customer_phone: bookingData.phone,
-                service_type: bookingData.service,
-                preferred_date: bookingData.date,
-                preferred_time: bookingData.time,
-                vehicle_info: bookingData.vehicle || 'Not specified',
-                special_requests: bookingData.message || 'None',
-                subject: `New Booking Request - ${bookingData.service}`,
-                customer_first_name: bookingData.firstName,
-                customer_last_name: bookingData.lastName,
-                booking_location: 'Fremont, CA'
-            };
-           
-            try {
-                await sendEmail(emailTemplate, 'booking');
-                showAlert('Booking request sent successfully! We\'ll contact you within 24 hours to confirm your appointment.', 'success');
-                this.reset();
-                // Reset minimum date
-                dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
-            } catch (error) {
-                showAlert('Failed to send booking request. Please try again or call us directly at (510) 555-WASH.', 'error');
-                console.error('Booking error:', error);
-            }
-           
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        });
-
-        // Enhanced contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-           
-            const submitBtn = document.getElementById('contactSubmitBtn');
-            const originalText = submitBtn.textContent;
-           
-            // Get form data
-            const formData = new FormData(this);
-            const contactData = Object.fromEntries(formData.entries());
-           
-            // Validate form
-            const errors = validateForm(contactData, false);
-            if (errors.length > 0) {
-                showAlert(errors[0], 'error');
-                return;
-            }
-           
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-           
-            // Prepare email template parameters
-            const emailTemplate = {
-                to_email: 'info.underhourcleaning@gmail.com',
-                from_name: contactData.contactName,
-                from_email: contactData.contactEmail,
-                contact_subject: contactData.contactSubject,
-                contact_message: contactData.contactMessage,
-                subject: `Contact Form: ${contactData.contactSubject}`,
-                sender_location: 'Fremont, CA'
-            };
-           
-            try {
-                await sendEmail(emailTemplate, 'contact');
-                showAlert('Message sent successfully! We\'ll get back to you soon.', 'success');
-                this.reset();
-            } catch (error) {
-                showAlert('Failed to send message. Please try again or call us directly at (510) 555-WASH.', 'error');
-                console.error('Contact error:', error);
-            }
-           
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        });
-
-        // Smooth scroll with offset for fixed navbar
-        function smoothScrollTo(targetId) {
-            const target = document.getElementById(targetId);
-            if (target) {
-                const navbarHeight = document.getElementById('navbar').offsetHeight;
-                const targetPosition = target.offsetTop - navbarHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Update scroll function calls
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                smoothScrollTo(targetId);
-            });
-        });
-
-        // Update button click handlers
-        function scrollToSection(sectionId) {
-            smoothScrollTo(sectionId);
-        }
-
-        // Preload critical resources
-        const preloadLinks = [
-            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap',
-            'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'
-        ];
-
-        preloadLinks.forEach(href => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = href.includes('fonts') ? 'style' : 'script';
-            link.href = href;
-            document.head.appendChild(link);
-        });
-
-        // Performance optimization - lazy load non-critical animations
-        const lazyAnimations = () => {
-            // Add entrance animations for elements
-            const animatedElements = document.querySelectorAll('.service-card, .team-card, .hero-text, .hero-visual');
-            
-            const animationObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        animationObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                animationObserver.observe(el);
-            });
-        };
-
-        // Initialize lazy animations after page load
-        window.addEventListener('load', lazyAnimations);
-
-        // Error handling for EmailJS
-        window.addEventListener('error', (e) => {
-            if (e.message.includes('emailjs')) {
-                console.error('EmailJS error detected:', e);
-                showAlert('Email service temporarily unavailable. Please call us directly at (510) 555-WASH.', 'warning');
-            }
-        });
-    </script>
-</body>
-</html>
+                if (!
