@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underhour Cleaning - Elite Car Care | Fremont, CA</title>
-    
-    <!-- EmailJS CDN -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
        
@@ -1011,6 +1007,38 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Sparkle and Ripple Effects */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: scale(0) translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) translateY(-30px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) translateY(-60px);
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -1471,19 +1499,13 @@
         </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
     <script>
-        // EmailJS Configuration
-        // Replace these with your actual EmailJS credentials
-        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-        const EMAILJS_TEMPLATE_ID_BOOKING = 'YOUR_BOOKING_TEMPLATE_ID'; // Replace with your booking template ID
-        const EMAILJS_TEMPLATE_ID_CONTACT = 'YOUR_CONTACT_TEMPLATE_ID'; // Replace with your contact template ID
-        const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
-
-        // Initialize EmailJS
-        (function(){
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-        })();
-
+        // Initialize EMAILJS - REPLACE WITH YOUR ACTUAL PUBLIC KEY
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+        
         // Loading screen
         window.addEventListener('load', () => {
             const loading = document.getElementById('loading');
@@ -1544,18 +1566,24 @@
         }
 
         // Email sending function using EmailJS
-        async function sendEmailJS(templateParams, templateId) {
+        async function sendEmail(templateParams, formType) {
             try {
-                const response = await emailjs.send(
-                    EMAILJS_SERVICE_ID,
-                    templateId,
-                    templateParams,
-                    EMAILJS_PUBLIC_KEY
-                );
-                console.log('Email sent successfully:', response);
+                // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+                const serviceID = 'YOUR_SERVICE_ID'; // e.g., 'service_abc123'
+                let templateID;
+                
+                // Use different templates for booking vs contact forms
+                if (formType === 'booking') {
+                    templateID = 'YOUR_BOOKING_TEMPLATE_ID'; // e.g., 'template_booking123'
+                } else {
+                    templateID = 'YOUR_CONTACT_TEMPLATE_ID'; // e.g., 'template_contact123'
+                }
+                
+                const response = await emailjs.send(serviceID, templateID, templateParams);
+                console.log('Email sent successfully:', response.status, response.text);
                 return response;
             } catch (error) {
-                console.error('Email sending failed:', error);
+                console.error('EmailJS error:', error);
                 throw error;
             }
         }
@@ -1575,43 +1603,38 @@
             const formData = new FormData(this);
             const bookingData = Object.fromEntries(formData.entries());
            
-            // Validate required fields
-            if (!bookingData.firstName || !bookingData.lastName || !bookingData.email || !bookingData.phone || !bookingData.service || !bookingData.date || !bookingData.time) {
-                showAlert('Please fill in all required fields', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                return;
-            }
-
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(bookingData.email)) {
+            // Validate email
+            if (!validateEmail(bookingData.email)) {
                 showAlert('Please enter a valid email address', 'error');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 return;
             }
            
-            // Prepare email template parameters
-            const templateParams = {
-                to_name: 'Underhour Cleaning Team', // This will be sent to your business
+            // Prepare email template parameters for EmailJS
+            const emailTemplate = {
+                to_email: 'info.underhourcleaning@gmail.com', // Your business email
                 from_name: `${bookingData.firstName} ${bookingData.lastName}`,
                 from_email: bookingData.email,
-                phone: bookingData.phone,
-                service: bookingData.service,
-                date: bookingData.date,
-                time: bookingData.time,
-                vehicle: bookingData.vehicle || 'Not specified',
-                message: bookingData.message || 'No special requests',
-                reply_to: bookingData.email
+                customer_phone: bookingData.phone,
+                service_type: bookingData.service,
+                preferred_date: bookingData.date,
+                preferred_time: bookingData.time,
+                vehicle_info: bookingData.vehicle || 'Not specified',
+                special_requests: bookingData.message || 'None',
+                subject: `New Booking Request - ${bookingData.service}`,
+                // Additional fields for template
+                customer_first_name: bookingData.firstName,
+                customer_last_name: bookingData.lastName,
+                booking_location: 'Fremont, CA'
             };
            
             try {
-                await sendEmailJS(templateParams, EMAILJS_TEMPLATE_ID_BOOKING);
+                await sendEmail(emailTemplate, 'booking');
                 showAlert('Booking request sent successfully! We\'ll contact you within 24 hours to confirm your appointment.', 'success');
                 this.reset(); // Reset form
             } catch (error) {
-                showAlert('Failed to send booking request. Please try again or call us directly.', 'error');
+                showAlert('Failed to send booking request. Please try again or call us directly at (510) 555-WASH.', 'error');
                 console.error('Booking error:', error);
             }
            
@@ -1635,39 +1658,24 @@
             const formData = new FormData(this);
             const contactData = Object.fromEntries(formData.entries());
            
-            // Validate required fields
-            if (!contactData.contactName || !contactData.contactEmail || !contactData.contactSubject || !contactData.contactMessage) {
-                showAlert('Please fill in all required fields', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                return;
-            }
-
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(contactData.contactEmail)) {
-                showAlert('Please enter a valid email address', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                return;
-            }
-           
-            // Prepare email template parameters
-            const templateParams = {
-                to_name: 'Underhour Cleaning Team',
+            // Prepare email template parameters for EmailJS
+            const emailTemplate = {
+                to_email: 'info.underhourcleaning@gmail.com', // Your business email
                 from_name: contactData.contactName,
                 from_email: contactData.contactEmail,
-                subject: contactData.contactSubject,
-                message: contactData.contactMessage,
-                reply_to: contactData.contactEmail
+                contact_subject: contactData.contactSubject,
+                contact_message: contactData.contactMessage,
+                subject: `Contact Form: ${contactData.contactSubject}`,
+                // Additional fields for template
+                sender_location: 'Fremont, CA'
             };
            
             try {
-                await sendEmailJS(templateParams, EMAILJS_TEMPLATE_ID_CONTACT);
+                await sendEmail(emailTemplate, 'contact');
                 showAlert('Message sent successfully! We\'ll get back to you soon.', 'success');
                 this.reset(); // Reset form
             } catch (error) {
-                showAlert('Failed to send message. Please try again or call us directly.', 'error');
+                showAlert('Failed to send message. Please try again or call us directly at (510) 555-WASH.', 'error');
                 console.error('Contact error:', error);
             }
            
@@ -1719,4 +1727,4 @@
         });
 
         // Add sparkle effect on service card hover
-        document.querySelectorAll('.service-card, .team-card').forEach(card => {
+        document.querySelectorAll('.service-card, .team-card').forEach(card =>
