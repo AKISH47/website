@@ -1,3 +1,8 @@
+
+Saarthak Agarwal
+5:04 PM (0 minutes ago)
+to me
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +17,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #2c3e50;
-            background-color: #ffffff;
+            color: #333;
         }
 
         .container {
@@ -28,7 +32,7 @@
         header {
             background: #1a1a1a;
             color: white;
-            padding: 1rem 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -36,17 +40,17 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .header-content {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: bold;
             color: #3498db;
-            letter-spacing: 1px;
         }
 
         .contact-info {
@@ -55,93 +59,82 @@
             font-size: 0.9rem;
         }
 
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        nav {
-            background: #2c3e50;
-            padding: 0.8rem 0;
-        }
-
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
         }
 
-        .nav-links a {
+        nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 10px 20px;
             transition: all 0.3s ease;
-            border-radius: 4px;
+            border-radius: 5px;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             background: #3498db;
-            color: white;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ecf0f1" width="1200" height="600"/><circle fill="%233498db" cx="300" cy="300" r="100" opacity="0.3"/><circle fill="%232980b9" cx="900" cy="200" r="80" opacity="0.3"/></svg>');
-            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #34495e;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 120px;
-            background-size: cover;
-            background-position: center;
+            margin-top: 100px;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
         }
 
-        .cta-button {
+        .cta-btn {
             background: #3498db;
             color: white;
-            padding: 15px 35px;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 5px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
             transition: all 0.3s ease;
             display: inline-block;
         }
 
-        .cta-button:hover {
+        .cta-btn:hover {
             background: #2980b9;
             transform: translateY(-2px);
         }
 
-        /* About Section */
-        .about {
+        /* Sections */
+        .section {
             padding: 80px 0;
-            background: #f8f9fa;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
             color: #2c3e50;
-            font-weight: 700;
+            font-weight: bold;
+        }
+
+        /* About */
+        .about {
+            background: #f8f9fa;
         }
 
         .about-content {
@@ -156,36 +149,28 @@
             line-height: 1.8;
         }
 
-        .about-stats {
+        .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
         .stat-box {
-            text-align: center;
-            padding: 30px;
             background: white;
-            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: bold;
             color: #3498db;
-            display: block;
         }
 
-        .stat-label {
-            font-size: 1rem;
-            color: #7f8c8d;
-            margin-top: 10px;
-        }
-
-        /* Services Section */
+        /* Services */
         .services {
-            padding: 80px 0;
             background: white;
         }
 
@@ -193,26 +178,24 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
 
         .service-card {
-            background: white;
+            background: #f8f9fa;
             padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-top: 4px solid #3498db;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
         .service-icon {
-            font-size: 3rem;
+            font-size: 4rem;
             color: #3498db;
             margin-bottom: 20px;
         }
@@ -223,38 +206,35 @@
             color: #2c3e50;
         }
 
-        .service-price {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
             color: #27ae60;
             margin-top: 20px;
         }
 
-        /* Team Section */
+        /* Team */
         .team {
-            padding: 80px 0;
             background: #f8f9fa;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            gap: 30px;
         }
 
         .team-card {
             background: white;
             padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
         .team-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .team-photo {
@@ -262,51 +242,49 @@
             height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, #3498db, #2980b9);
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: bold;
             color: white;
         }
 
         .team-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: bold;
             margin-bottom: 10px;
+            color: #2c3e50;
         }
 
         .team-role {
-            font-size: 1rem;
             color: #3498db;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .team-email {
-            font-size: 0.9rem;
             color: #7f8c8d;
+            font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
-        /* Contact Section */
+        /* Contact */
         .contact {
-            padding: 80px 0;
             background: white;
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
         }
 
         .contact-info h3 {
-            font-size: 1.5rem;
-            color: #2c3e50;
+            font-size: 1.8rem;
             margin-bottom: 30px;
+            color: #2c3e50;
         }
 
         .contact-item {
@@ -320,7 +298,7 @@
         .contact-form {
             background: #f8f9fa;
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .form-group {
@@ -330,13 +308,11 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: bold;
             color: #2c3e50;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-control {
             width: 100%;
             padding: 12px;
             border: 2px solid #ddd;
@@ -345,9 +321,7 @@
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-control:focus {
             outline: none;
             border-color: #3498db;
         }
@@ -355,11 +329,11 @@
         .submit-btn {
             background: #3498db;
             color: white;
-            padding: 15px 40px;
+            padding: 15px 30px;
             border: none;
             border-radius: 5px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
@@ -367,14 +341,18 @@
 
         .submit-btn:hover {
             background: #2980b9;
-            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
         }
 
         /* Footer */
         footer {
             background: #1a1a1a;
             color: white;
-            padding: 50px 0 30px;
+            padding: 50px 0 20px;
         }
 
         .footer-content {
@@ -387,13 +365,6 @@
         .footer-section h3 {
             color: #3498db;
             margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .footer-section p,
-        .footer-section li {
-            color: #bdc3c7;
-            line-height: 1.8;
         }
 
         .footer-section ul {
@@ -401,66 +372,57 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .footer-section ul li a {
+        .footer-section a {
             color: #bdc3c7;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-section ul li a:hover {
+        .footer-section a:hover {
             color: #3498db;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid #34495e;
             color: #7f8c8d;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+           
             .contact-info {
                 display: none;
             }
            
-            .hero-content h1 {
+            .hero h1 {
                 font-size: 2.5rem;
             }
            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-           
+            .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
             }
            
-            .nav-links {
+            nav ul {
                 flex-wrap: wrap;
-                gap: 20px;
+                gap: 15px;
             }
-        }
-
-        .teen-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 10px;
-            display: inline-block;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
+            <div class="header-top">
                 <div class="logo">ELITE GLO</div>
                 <div class="contact-info">
                     <span>📞 (555) 123-4567</span>
@@ -468,141 +430,128 @@
                     <span>📍 123 Business Ave, City</span>
                 </div>
             </div>
-        </div>
-        <nav>
-            <div class="container">
-                <ul class="nav-links">
+            <nav>
+                <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
+        <div class="container">
             <h1>ELITE GLO</h1>
-            <p>Professional Automotive Care & Detailing Services<br>Delivering Excellence Since 2024</p>
-            <a href="#contact" class="cta-button">Get Free Quote</a>
+            <p>Professional Automotive Care & Detailing Services</p>
+            <a href="#contact" class="cta-btn">Get Free Quote</a>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="section about">
         <div class="container">
             <h2 class="section-title">About Elite Glo</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p><strong>Elite Glo is a young, dynamic automotive care company founded by ambitious teenagers who are passionate about delivering exceptional car washing and detailing services.</strong></p>
-                    <p>Despite our young age, our team brings fresh energy, attention to detail, and a commitment to excellence that rivals established companies. We combine modern techniques with eco-friendly products to ensure your vehicle receives the best care possible.</p>
-                    <p>Our mission is to provide professional, reliable, and affordable automotive care services while building a sustainable business that serves our community with pride and integrity.</p>
-                    <div class="teen-badge">🌟 Proudly Teen-Owned & Operated</div>
+                    <h3>Professional Car Care Excellence</h3>
+                    <p>Elite Glo is a premier automotive care company dedicated to providing exceptional car washing and detailing services. Our experienced team combines advanced techniques with eco-friendly products to deliver outstanding results.</p>
+                    <p>Founded with a commitment to excellence, we serve our community with professional, reliable, and affordable automotive care services that exceed expectations.</p>
+                    <p>Our mission is to maintain your vehicle's appearance and value through meticulous attention to detail and superior customer service.</p>
                 </div>
-                <div class="about-stats">
+                <div class="stats">
                     <div class="stat-box">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Cars Serviced</span>
+                        <div class="stat-number">1000+</div>
+                        <div>Cars Serviced</div>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Customer Satisfaction</span>
+                        <div class="stat-number">99%</div>
+                        <div>Customer Satisfaction</div>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Year in Business</span>
+                        <div class="stat-number">3</div>
+                        <div>Years Experience</div>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Customer Support</span>
+                        <div class="stat-number">24/7</div>
+                        <div>Customer Support</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="section services">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🚗</div>
                     <h3>Basic Wash</h3>
-                    <p>Exterior wash, tire cleaning, and basic interior vacuum. Perfect for regular maintenance.</p>
-                    <div class="service-price">$25</div>
+                    <p>Complete exterior wash, interior vacuum, tire cleaning, and window cleaning.</p>
+                    <div class="price">$29</div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">✨</div>
                     <h3>Premium Detail</h3>
-                    <p>Complete interior and exterior detailing with wax, polish, and deep cleaning.</p>
-                    <div class="service-price">$75</div>
+                    <p>Full interior and exterior detailing with wax, polish, and deep cleaning.</p>
+                    <div class="price">$89</div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🛡️</div>
                     <h3>Paint Protection</h3>
-                    <p>Advanced ceramic coating and paint protection services for long-lasting shine.</p>
-                    <div class="service-price">$150</div>
+                    <p>Advanced ceramic coating and paint protection for long-lasting shine.</p>
+                    <div class="price">$199</div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">⚡</div>
-                    <h3>Express Service</h3>
-                    <p>Quick 30-minute service for busy schedules. Exterior wash and interior wipe-down.</p>
-                    <div class="service-price">$35</div>
+                    <h3>Express Wash</h3>
+                    <p>Quick 20-minute service for busy schedules without compromising quality.</p>
+                    <div class="price">$19</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="team" class="team">
+    <section id="team" class="section team">
         <div class="container">
-            <h2 class="section-title">Our Leadership Team</h2>
+            <h2 class="section-title">Our Professional Team</h2>
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-photo">A</div>
                     <div class="team-name">Akash</div>
                     <div class="team-role">Chief Executive Officer</div>
                     <div class="team-email">akash@eliteglo.com</div>
-                    <p>Visionary leader driving Elite Glo's growth and strategic direction. Age 17.</p>
-                    <div class="teen-badge">Teen Entrepreneur</div>
+                    <p>Visionary leader with extensive experience in automotive care and business management.</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">S</div>
                     <div class="team-name">Saarthak</div>
                     <div class="team-role">Operations Manager</div>
                     <div class="team-email">saarthak@eliteglo.com</div>
-                    <p>Ensures smooth daily operations and maintains our high service standards. Age 16.</p>
-                    <div class="teen-badge">Teen Professional</div>
+                    <p>Expert in operational efficiency and quality control with years of industry experience.</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">J</div>
                     <div class="team-name">Justin</div>
-                    <div class="team-role">Service Specialist</div>
+                    <div class="team-role">Senior Detailing Specialist</div>
                     <div class="team-email">justin@eliteglo.com</div>
-                    <p>Expert in detailing techniques and customer service excellence. Age 17.</p>
-                    <div class="teen-badge">Teen Expert</div>
+                    <p>Master detailer specializing in premium services and customer satisfaction.</p>
                 </div>
                 <div class="team-card">
                     <div class="team-photo">P</div>
                     <div class="team-name">Prahalad</div>
-                    <div class="team-role">Quality Control Manager</div>
+                    <div class="team-role">Quality Assurance Manager</div>
                     <div class="team-email">prahalad@eliteglo.com</div>
-                    <p>Maintains quality standards and ensures customer satisfaction. Age 16.</p>
-                    <div class="teen-badge">Teen Leader</div>
+                    <p>Ensures every service meets our high standards of excellence and quality.</p>
                 </div>
-                <div class="team-card">
-                    <div class="team-photo">JS</div>
-                    <div class="team-name">JS</div>
-                    <div class="team-role">Technical Coordinator</div>
-                    <div class="team-email">js@eliteglo.com</div>
-                    <p>Handles technical aspects and innovative service solutions. Age 17.</p>
-                    <div class="teen-badge">Teen Innovator</div>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
@@ -610,52 +559,66 @@
                     <h3>Get In Touch</h3>
                     <div class="contact-item">
                         <span>📍</span>
-                        <span>123 Business Avenue<br>Downtown District, City 12345</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            123 Business Avenue<br>
+                            Downtown District, City 12345
+                        </div>
                     </div>
                     <div class="contact-item">
                         <span>📞</span>
-                        <span>(555) 123-4567</span>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            (555) 123-4567
+                        </div>
                     </div>
                     <div class="contact-item">
                         <span>✉️</span>
-                        <span>info@eliteglo.com</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            info@eliteglo.com
+                        </div>
                     </div>
                     <div class="contact-item">
                         <span>🕒</span>
-                        <span>Mon-Sat: 8AM-6PM<br>Sunday: 10AM-4PM</span>
+                        <div>
+                            <strong>Hours:</strong><br>
+                            Mon-Sat: 8:00 AM - 7:00 PM<br>
+                            Sunday: 10:00 AM - 5:00 PM
+                        </div>
                     </div>
                 </div>
-                <form class="contact-form" onsubmit="handleSubmit(event)">
-                    <h3 style="margin-bottom: 30px; color: #2c3e50;">Book Your Service</h3>
+                <form class="contact-form" id="contactForm">
+                    <h3 style="margin-bottom: 30px; color: #2c3e50;">Schedule Your Service</h3>
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="service">Service Required *</label>
-                        <select id="service" name="service" required>
+                        <select id="service" name="service" class="form-control" required>
                             <option value="">Select a service</option>
-                            <option value="basic-wash">Basic Wash - $25</option>
-                            <option value="premium-detail">Premium Detail - $75</option>
-                            <option value="paint-protection">Paint Protection - $150</option>
-                            <option value="express-service">Express Service - $35</option>
+                            <option value="basic-wash">Basic Wash - $29</option>
+                            <option value="premium-detail">Premium Detail - $89</option>
+                            <option value="paint-protection">Paint Protection - $199</option>
+                            <option value="express-wash">Express Wash - $19</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="vehicle">Vehicle Information</label>
-                        <input type="text" id="vehicle" name="vehicle" placeholder="Year, Make, Model">
+                        <input type="text" id="vehicle" name="vehicle" class="form-control" placeholder="Year, Make, Model">
                     </div>
                     <div class="form-group">
                         <label for="message">Additional Notes</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Any special requirements or instructions..."></textarea>
+                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Any special requirements or instructions..."></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Schedule Appointment</button>
                 </form>
@@ -668,25 +631,25 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Elite Glo</h3>
-                    <p>Professional automotive care services delivered by passionate young entrepreneurs. We're committed to excellence and customer satisfaction.</p>
-                    <div class="teen-badge" style="margin-top: 15px;">🌟 Teen-Owned Business</div>
+                    <p>Professional automotive care services delivering excellence and customer satisfaction since 2021.</p>
+                    <p>Your trusted partner for all car care needs.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Services</h3>
+                    <h3>Our Services</h3>
                     <ul>
                         <li><a href="#services">Basic Wash</a></li>
                         <li><a href="#services">Premium Detail</a></li>
                         <li><a href="#services">Paint Protection</a></li>
-                        <li><a href="#services">Express Service</a></li>
+                        <li><a href="#services">Express Wash</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact Info</h3>
+                    <h3>Contact Information</h3>
                     <ul>
                         <li>📞 (555) 123-4567</li>
                         <li>✉️ info@eliteglo.com</li>
                         <li>📍 123 Business Ave, City</li>
-                        <li>🕒 Mon-Sat: 8AM-6PM</li>
+                        <li>🕒 Mon-Sat: 8AM-7PM</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -700,52 +663,75 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Elite Glo Car Washing Company. All rights reserved. | Proudly operated by young entrepreneurs.</p>
+                <p>&copy; 2024 Elite Glo Car Washing Company. All rights reserved. | Professional automotive care services you can trust.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
     <script>
-        // Smooth scrolling navigation
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData.entries());
+        // Form submission with EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
            
-            // Show success message
-            alert('Thank you for your booking request! Our team will contact you within 24 hours to confirm your appointment and provide additional details.');
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
            
-            // Reset form
-            event.target.reset();
-        }
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+           
+            // Prepare template parameters
+            const templateParams = {
+                from_name: this.name.value,
+                from_email: this.email.value,
+                phone: this.phone.value,
+                service: this.service.value,
+                vehicle: this.vehicle.value,
+                message: this.message.value,
+                to_email: 'info@eliteglo.com'
+            };
+           
+            // Send email
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    alert('Thank you! Your appointment request has been sent successfully. We will contact you within 24 hours to confirm your booking.');
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    console.log('EmailJS Error:', error);
+                    alert('Sorry, there was an error sending your message. Please try calling us directly at (555) 123-4567.');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
 
         // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-           
-            if (currentScroll > 100) {
-                header.style.transform = currentScroll > lastScroll ? 'translateY(-100%)' : 'translateY(0)';
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             } else {
-                header.style.transform = 'translateY(0)';
+                header.style.background = '#1a1a1a';
+                header.style.backdropFilter = 'none';
             }
-           
-            lastScroll = currentScroll;
         });
 
         // Counter animation
@@ -753,7 +739,7 @@
             const counters = document.querySelectorAll('.stat-number');
             counters.forEach(counter => {
                 const target = parseInt(counter.textContent.replace(/\D/g, ''));
-                const increment = target / 100;
+                const increment = target / 50;
                 let current = 0;
                
                 const timer = setInterval(() => {
@@ -764,21 +750,21 @@
                     } else {
                         counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
                     }
-                }, 20);
+                }, 40);
             });
         }
 
-        // Trigger counter animation when in view
+        // Trigger animations on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.target.classList.contains('stats')) {
                     animateCounters();
                     observer.unobserve(entry.target);
                 }
             });
         });
 
-        observer.observe(document.querySelector('.about-stats'));
+        observer.observe(document.querySelector('.stats'));
     </script>
 </body>
 </html>
