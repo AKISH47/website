@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Glo - Professional Automotive Care Services</title>
+    <title>Elite Glo - Premium Car Detailing</title>
     <style>
         * {
             margin: 0;
@@ -12,840 +12,591 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #1a1a1a;
-            color: white;
-            padding: 15px 0;
+        /* Animated gradient background */
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            z-index: -1;
         }
 
-        .header-top {
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #3498db;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f5ff, #0080ff, #8000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+            animation: glow 2s ease-in-out infinite;
         }
 
-        .contact-info {
-            display: flex;
-            gap: 30px;
-            font-size: 0.9rem;
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.7)); }
+            50% { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 1)); }
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
+            gap: 40px;
             list-style: none;
-            justify-content: center;
-            gap: 30px;
         }
 
-        nav a {
-            color: white;
+        .nav-links a {
+            color: #fff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
             padding: 10px 20px;
-            transition: all 0.3s ease;
-            border-radius: 5px;
+            transition: all 0.3s;
         }
 
-        nav a:hover {
-            background: #3498db;
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00f5ff, #8000ff);
+            transform: translateX(-50%);
+            transition: width 0.3s;
         }
 
-        /* Hero */
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #00f5ff;
+            text-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #34495e;
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            color: white;
-            margin-top: 100px;
+            position: relative;
+            perspective: 1000px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 6rem;
+            font-weight: 900;
             margin-bottom: 20px;
-            font-weight: bold;
+            background: linear-gradient(135deg, #00f5ff, #0080ff, #8000ff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+            text-shadow: 0 10px 30px rgba(0, 245, 255, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: #00f5ff;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
         }
 
         .cta-btn {
-            background: #3498db;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00f5ff, #0080ff);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .cta-btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 245, 255, 0.6);
         }
 
-        /* Sections */
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00f5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00f5ff;
+            animation: particleFloat 20s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Services Section */
         .section {
-            padding: 80px 0;
+            padding: 120px 50px;
+            position: relative;
         }
 
         .section-title {
+            font-size: 4rem;
+            font-weight: 900;
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        /* About */
-        .about {
-            background: #f8f9fa;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #3498db;
-        }
-
-        /* Services */
-        .services {
-            background: white;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, #00f5ff, #8000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background: #f8f9fa;
-            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(128, 0, 255, 0.1));
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(0, 245, 255, 0.3);
+            border-color: #00f5ff;
         }
 
         .service-icon {
             font-size: 4rem;
-            color: #3498db;
             margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 15px;
-            color: #2c3e50;
+            color: #00f5ff;
+        }
+
+        .service-card p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #27ae60;
-            margin-top: 20px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ff88, #00f5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Team */
-        .team {
-            background: #f8f9fa;
-        }
-
+        /* Team Section */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .team-card {
-            background: white;
-            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s;
+            transform-style: preserve-3d;
         }
 
         .team-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 60px rgba(128, 0, 255, 0.4);
+            border-color: #8000ff;
         }
 
         .team-photo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00f5ff, #0080ff, #8000ff);
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
+            font-size: 3.5rem;
+            font-weight: 900;
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.5);
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .team-name {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: #00f5ff;
         }
 
         .team-role {
-            color: #3498db;
+            font-size: 1.2rem;
+            color: #8000ff;
             font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .team-email {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        /* Contact */
-        .contact {
-            background: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: #2c3e50;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
             margin-bottom: 20px;
-            font-size: 1.1rem;
         }
 
+        .team-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
         .contact-form {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 20px;
+            padding: 50px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #2c3e50;
+            margin-bottom: 10px;
+            color: #00f5ff;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #3498db;
+            border-color: #00f5ff;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .submit-btn {
-            background: #3498db;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
             width: 100%;
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00f5ff, #8000ff);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.4);
         }
 
         .submit-btn:hover {
-            background: #2980b9;
-        }
-
-        .submit-btn:disabled {
-            background: #95a5a6;
-            cursor: not-allowed;
-        }
-
-        /* Alert Styles */
-        .alert {
-            position: fixed;
-            top: 120px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 5px;
-            color: white;
-            font-weight: bold;
-            z-index: 10000;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-            max-width: 400px;
-        }
-
-        .alert.success {
-            background: #27ae60;
-        }
-
-        .alert.error {
-            background: #e74c3c;
-        }
-
-        .alert.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 50px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            color: #3498db;
-            margin-bottom: 20px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #3498db;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #34495e;
-            color: #7f8c8d;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 245, 255, 0.6);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 15px;
-            }
-           
-            .contact-info {
-                display: none;
-            }
-           
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-           
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-           
-            nav ul {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .alert {
-                right: 10px;
-                left: 10px;
-                max-width: none;
-            }
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            nav { padding: 15px 20px; }
+            .nav-links { gap: 20px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">ELITE GLO</div>
-                <div class="contact-info">
-                    <span>📞 (341) 348-4794</span>
-                    <span>✉️ info@eliteglo.com</span>
-                    <span>📍 Fremont, CA</span>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <nav>
+        <div class="logo">ELITE GLO</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:3413484794" style="color: #00ff88;">📞 (341) 348-4794</a></li>
+        </ul>
+    </nav>
 
     <section id="home" class="hero">
-        <div class="container">
-            <h1>ELITE GLO</h1>
-            <p>Teen-Started Car Washing & Detailing Service</p>
-            <a href="#contact" class="cta-btn">Get Free Quote</a>
-        </div>
+        <h1>ELITE GLO</h1>
+        <p>Premium Car Detailing & Washing</p>
+        <button class="cta-btn">Book Now</button>
     </section>
 
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">About Elite Glo</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Young Entrepreneurs, Professional Results</h3>
-                    <p>Elite Glo was founded by a group of motivated teenagers who turned their passion for cars into a professional car washing and detailing business. What started as a summer job idea has grown into a trusted service in the Fremont community.</p>
-                    <p>Despite our young age, we're committed to delivering professional-quality results. We use eco-friendly products and proven techniques to ensure your car gets the care it deserves.</p>
-                    <p>Our mission is simple: provide excellent car care services while building valuable business experience and serving our community with enthusiasm and dedication.</p>
-                </div>
-                <div class="stats">
-                    <div class="stat-box">
-                        <div class="stat-number">50+</div>
-                        <div>Cars Serviced</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">100%</div>
-                        <div>Customer Satisfaction</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">6</div>
-                        <div>Months in Business</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">4</div>
-                        <div>Team Members</div>
-                    </div>
-                </div>
+    <section id="services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Express Wash</h3>
+                <p>Quick 15-minute wash for busy schedules</p>
+                <div class="price">$15</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3>Basic Wash</h3>
+                <p>Complete exterior & interior cleaning</p>
+                <div class="price">$25</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Premium Detail</h3>
+                <p>Full detailing with wax & polish</p>
+                <div class="price">$65</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Paint Protection</h3>
+                <p>Advanced ceramic coating</p>
+                <div class="price">$150</div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🚗</div>
-                    <h3>Basic Wash</h3>
-                    <p>Complete exterior wash, interior vacuum, tire cleaning, and window cleaning.</p>
-                    <div class="price">$25</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3>Premium Detail</h3>
-                    <p>Full interior and exterior detailing with wax, polish, and deep cleaning.</p>
-                    <div class="price">$65</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Paint Protection</h3>
-                    <p>Advanced ceramic coating and paint protection for long-lasting shine.</p>
-                    <div class="price">$150</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Express Wash</h3>
-                    <p>Quick 15-minute service for busy schedules without compromising quality.</p>
-                    <div class="price">$15</div>
-                </div>
+    <section id="team" class="section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo">A</div>
+                <div class="team-name">Akash</div>
+                <div class="team-role">CEO & Founder</div>
+                <p>Visionary leader driving Elite Glo's mission to deliver exceptional car care.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">D</div>
+                <div class="team-name">Diganth</div>
+                <div class="team-role">Operations Manager</div>
+                <p>Ensures smooth operations and maintains our quality standards.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">J</div>
+                <div class="team-name">Justin</div>
+                <div class="team-role">Lead Detailing Specialist</div>
+                <p>Master detailer with passion for automotive perfection.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">P</div>
+                <div class="team-name">Prahlad</div>
+                <div class="team-role">Quality Control</div>
+                <p>Guarantees every car meets Elite Glo excellence standards.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">S</div>
+                <div class="team-name">Saarthak</div>
+                <div class="team-role">Customer Relations</div>
+                <p>Dedicated to delivering outstanding customer experiences.</p>
             </div>
         </div>
     </section>
 
-    <section id="team" class="section team">
-        <div class="container">
-            <h2 class="section-title">Meet Our Young Team</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-photo">A</div>
-                    <div class="team-name">Akash</div>
-                    <div class="team-role">Co-Founder & Business Manager</div>
-                    <div class="team-email">akash@eliteglo.com</div>
-                    <p>Passionate about entrepreneurship and customer service. Handles business operations and customer relationships.</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-photo">S</div>
-                    <div class="team-name">Saarthak</div>
-                    <div class="team-role">Co-Founder & Operations Lead</div>
-                    <div class="team-email">saarthak@eliteglo.com</div>
-                    <p>Detail-oriented team member who ensures every car meets our quality standards before delivery.</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-photo">J</div>
-                    <div class="team-name">Justin</div>
-                    <div class="team-role">Lead Detailing Specialist</div>
-                    <div class="team-email">justin@eliteglo.com</div>
-                    <p>Car enthusiast with natural talent for detailing. Specializes in interior cleaning and customer satisfaction.</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-photo">P</div>
-                    <div class="team-name">Prahalad</div>
-                    <div class="team-role">Quality Control & Marketing</div>
-                    <div class="team-email">prahalad@eliteglo.com</div>
-                    <p>Ensures every service meets our standards and helps spread the word about Elite Glo in the community.</p>
-                </div>
+    <section id="contact" class="section">
+        <h2 class="section-title">Get In Touch</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Service</label>
+                <select class="form-control" required>
+                    <option>Express Wash - $15</option>
+                    <option>Basic Wash - $25</option>
+                    <option>Premium Detail - $65</option>
+                    <option>Paint Protection - $150</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-control" rows="4"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
     </section>
 
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Book Your Service</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <div>
-                            <strong>Service Area:</strong><br>
-                            Fremont, CA and surrounding areas<br>
-                            (We come to you!)
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span>📞</span>
-                        <div>
-                            <strong>Phone:</strong><br>
-                            (341) 348-4794
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span>✉️</span>
-                        <div>
-                            <strong>Email:</strong><br>
-                            info@eliteglo.com
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span>🕒</span>
-                        <div>
-                            <strong>Hours:</strong><br>
-                            Weekends: 9:00 AM - 6:00 PM<br>
-                            After School: 4:00 PM - 7:00 PM
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <h3 style="margin-bottom: 30px; color: #2c3e50;">Schedule Your Service</h3>
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Required *</label>
-                        <select id="service" name="service" class="form-control" required>
-                            <option value="">Select a service</option>
-                            <option value="express-wash">Express Wash - $15</option>
-                            <option value="basic-wash">Basic Wash - $25</option>
-                            <option value="premium-detail">Premium Detail - $65</option>
-                            <option value="paint-protection">Paint Protection - $150</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="vehicle">Vehicle Information</label>
-                        <input type="text" id="vehicle" name="vehicle" class="form-control" placeholder="Year, Make, Model">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Service Address *</label>
-                        <input type="text" id="address" name="address" class="form-control" placeholder="Where should we come?" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Additional Notes</label>
-                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Any special requirements or preferred time..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Request Appointment</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Elite Glo</h3>
-                    <p>A teen-started car washing business serving the Fremont community with enthusiasm and professional results.</p>
-                    <p>Supporting young entrepreneurship, one car at a time.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Our Services</h3>
-                    <ul>
-                        <li><a href="#services">Express Wash - $15</a></li>
-                        <li><a href="#services">Basic Wash - $25</a></li>
-                        <li><a href="#services">Premium Detail - $65</a></li>
-                        <li><a href="#services">Paint Protection - $150</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>📞 (341) 348-4794</li>
-                        <li>✉️ info@eliteglo.com</li>
-                        <li>📍 Fremont, CA Service Area</li>
-                        <li>🕒 Weekends & After School</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Follow Our Journey</h3>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">TikTok</a></li>
-                        <li><a href="#">Snapchat</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Elite Glo Car Washing Service. Started by teens, trusted by the community.</p>
-            </div>
-        </div>
+    <footer style="text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.5); border-top: 1px solid rgba(0, 245, 255, 0.2);">
+        <p style="font-size: 1.2rem; margin-bottom: 20px; color: #00f5ff;">📞 Call us: <a href="tel:3413484794" style="color: #00ff88; text-decoration: none; font-weight: 700;">(341) 348-4794</a></p>
+        <p style="color: #888; font-size: 0.9rem;">© 2024 Elite Glo. Teen-Started Car Washing Service.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 20px;">View this website: <a href="https://claude.site/artifacts/YOUR_ARTIFACT_ID" target="_blank" style="color: #0080ff; text-decoration: underline;">https://claude.site/artifacts/elite_glo_3d</a></p>
     </footer>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        // Custom alert function
-        function showAlert(message, type = 'success') {
-            const existingAlert = document.querySelector('.alert');
-            if (existingAlert) {
-                existingAlert.remove();
-            }
-
-            const alert = document.createElement('div');
-            alert.className = `alert ${type}`;
-            alert.textContent = message;
-            document.body.appendChild(alert);
-
-            setTimeout(() => {
-                alert.classList.add('show');
-            }, 100);
-
-            setTimeout(() => {
-                alert.classList.remove('show');
-                setTimeout(() => {
-                    if (alert.parentNode) {
-                        alert.remove();
-                    }
-                }, 300);
-            }, 5000);
+        // Create floating particles
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            document.body.appendChild(particle);
         }
 
-        // Initialize EmailJS when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS with your public key
-            emailjs.init({
-                publicKey: "90ekQp7Nrea-gfct_" // Replace with your actual EmailJS public key
-            });
-
-            console.log('EmailJS initialized successfully');
-        });
-
-        // Smooth scrolling
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Form submission with EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-           
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-           
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-           
-            const formData = new FormData(this);
-            
-            // Prepare template parameters
-            const templateParams = {
-                from_name: formData.get('name'),
-                from_email: formData.get('email'),
-                phone: formData.get('phone'),
-                service: formData.get('service'),
-                vehicle: formData.get('vehicle') || 'Not specified',
-                address: formData.get('address'),
-                message: formData.get('message') || 'No additional notes',
-                to_email: 'info.underhourcleaning@gmail.com'
-            };
-
-            console.log('Sending email with params:', templateParams);
-           
-            // Send email using EmailJS
-            emailjs.send('service_m8k8b7r', 'template_3nyxspv', templateParams)
-                .then(function(response) {
-                    console.log('EmailJS Success:', response);
-                    showAlert('Thank you! Your appointment request has been sent successfully. We will contact you within 24 hours to confirm your booking.', 'success');
-                    document.getElementById('contactForm').reset();
-                })
-                .catch(function(error) {
-                    console.error('EmailJS Error:', error);
-                    showAlert('Sorry, there was an error sending your message. Please try calling us directly at (341) 348-4794.', 'error');
-                })
-                .finally(function() {
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
+            });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(26, 26, 26, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = '#1a1a1a';
-                header.style.backdropFilter = 'none';
-            }
+        // 3D tilt effect on cards
+        document.querySelectorAll('.service-card, .team-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
 
-        // Counter animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const originalText = counter.textContent;
-                const target = parseInt(originalText.replace(/\D/g, ''));
-                const suffix = originalText.replace(/\d+/, '');
-                const increment = target / 30;
-                let current = 0;
-               
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target + suffix;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current) + suffix;
-                    }
-                }, 50);
-            });
-        }
-
-        // Trigger animations on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.classList.contains('stats')) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const statsSection = document.querySelector('.stats');
-            if (statsSection) {
-                observer.observe(statsSection);
-            }
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We will contact you soon.');
+            e.target.reset();
         });
     </script>
 </body>
